@@ -12,10 +12,12 @@ checked() {
   rm /tmp/flex-setup > /dev/null 2>&1
 }
 
-checked 'Installing git...' apt-get install git
-checked 'Cloning flex tool...' git clone git@github.com:tsaodown/flex.git /usr/local/share/flex
+checked 'Installing git...' sudo apt-get install -y git
+checked 'Create shared installation directory...' sudo mkdir -p /srv/flex
+checked 'Setup permission...' sudo chmod 777 /srv/flex
+checked 'Cloning flex tool...' sudo git clone https://github.com/tsaodown/flex.git /srv/flex/repo
 cwd=$(pwd)
-cd /usr/local/share/flex/setup_scripts
+cd /srv/flex/repo/setup_scripts
 for s in *.sh; do
   checked "Running $s..." /bin/bash "$s" -H || break
 done
