@@ -7,18 +7,20 @@ die() {
   exit 1
 }
 checked() {
-  printf "\e[1;92m$1\e[0m\n"
+  printf "\e[1;90m$1\e[0m\n"
   eval "${*:2}" > /tmp/flex-setup 2>&1 || die
   rm /tmp/flex-setup > /dev/null 2>&1
 }
 
 checked 'Installing git...' sudo apt-get install -y git
 checked 'Create shared installation directory...' sudo mkdir -p /srv/flex
-checked 'Setup permission...' sudo chmod 777 /srv/flex
+checked 'Setup permissions...' sudo chmod 777 /srv/flex
 checked 'Cloning flex tool...' git clone https://github.com/tsaodown/flex.git /srv/flex/repo
 cwd=$(pwd)
 cd /srv/flex/repo/setup_scripts
 for s in *.sh; do
   checked "Running $s..." /bin/bash "$s" -H || break
 done
+checked 'Cleanup permissions...' sudo chmod -R 755 /srv/flex
 cd $cwd
+printf "\e[1;92mDone\e[0m\n"
