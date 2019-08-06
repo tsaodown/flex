@@ -15,7 +15,7 @@ checked() {
 checked 'Installing git...' sudo apt-get install -y git
 checked 'Create shared installation directory...' sudo mkdir -p /srv/flex
 checked 'Setup permission...' sudo chmod 777 /srv/flex
-checked 'Cloning flex tool...' sudo git clone https://github.com/tsaodown/flex.git /srv/flex/repo
+checked 'Cloning flex tool...' git clone https://github.com/tsaodown/flex.git /srv/flex/repo
 cwd=$(pwd)
 cd /srv/flex/repo/setup_scripts
 for s in *.sh; do
