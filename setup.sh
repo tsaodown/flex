@@ -12,7 +12,6 @@ checked() {
   rm /tmp/flex-setup > /dev/null 2>&1
 }
 
-checked 'Gimme that superuser goodness...' sudo su
 checked 'Installing git...' apt-get install git
 checked 'Cloning flex tool...' git clone git@github.com:tsaodown/flex.git /usr/local/share/flex
 cwd=$(pwd)
