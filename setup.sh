@@ -9,6 +9,7 @@ die() {
 checked() {
   printf "\e[1;92m$1\e[0m\n"
   eval "${*:2}" > /tmp/flex-setup 2>&1 || die
+  rm /tmp/flex-setup > /dev/null 2>&1
 }
 
 checked 'Cloning flex tool...' git clone git@github.com:tsaodown/flex.git /usr/local/share/flex
