@@ -14,6 +14,7 @@ Flexible Ubuntu system configuration
 <!-- tocstop -->
 # Usage
 <!-- usage -->
+```wget -O- https://raw.githubusercontent.com/tsaodown/flex/master/setup.sh | bash```
 ```sh-session
 $ npm install -g flex
 $ flex COMMAND
